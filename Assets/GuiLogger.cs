@@ -10,7 +10,6 @@ public class GuiLogger : MonoBehaviour {
 	private GUIStyle style;
 
 	private bool enableRefresh = true;
-	private string content = null;
 	private List<string> contents = new List<string>();
 
 	// Use this for initialization
@@ -45,6 +44,7 @@ public class GuiLogger : MonoBehaviour {
 	}
 
 	void OnGUI() {
+		// Throttle content update events.
 		if (enableRefresh) {
 			enableRefresh = false;
 			contents = new List<string> ();
@@ -122,7 +122,6 @@ public class GuiLogger : MonoBehaviour {
 	}
 
 	private void printIntoBuffer(string newContent) {
-		content += newContent + "\n";
 		contents.Add (newContent);
 	}
 
